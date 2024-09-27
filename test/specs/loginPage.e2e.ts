@@ -15,18 +15,17 @@ describe("Login page validation tests", () => {
   before(async () => {
     await HomePage.openHostingerPage();
     await HomePage.acceptCookieButton.click();
-    await HomePage.chooseBusinessPlanButton.waitForDisplayed();
     await HomePage.chooseBusinessPlanButton.click();
     await CartPage.periodSelector.waitForDisplayed();
 
     //Two lines below are workaround because of the bug. Bug: when period is selected, loader on countinue button loops.
     await browser.back();
     await HomePage.chooseBusinessPlanButton.click();
-
+    
+    await CartPage.periodSelector.waitForDisplayed();
     await CartPage.periodSelector.click();
-    await (await CartPage.getPeriodOption(TWENTY_FOUR_MONTHS_PERIOD)).click();
+    await CartPage.getPeriodOption(TWENTY_FOUR_MONTHS_PERIOD).click();
     await CartPage.continueButton.click();
-    await LoginPage.getLoginFieldInput(EMAIL_FIELD).waitForDisplayed();
   });
 
   it("should validate email field", async () => {
