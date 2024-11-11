@@ -1,19 +1,17 @@
 import Page from "./page.js";
 
 class LoginPage extends Page {
-  public get loginButton() {
-    return $('button[data-qa="login-button"]');
+  get usernameOrEmailInput() {
+    return $('input[data-testid="identifier-input"]');
   }
-  getLoginField(fieldName: string) {
-    return $(`div[data-qa="registration-${fieldName}-input"]`);
+  get passwordInput() {
+    return $('input[data-testid="signin-password-input"]');
   }
-  getLoginFieldValidationMessage(fieldName: string) {
-    return this.getLoginField(fieldName)
-      .$('p[data-qa="input-error"]')
-      .getText();
+  get loginButton() {
+    return $('button[data-testid="signin-button"]');
   }
-  getLoginFieldInput(fieldName: string) {
-    return this.getLoginField(fieldName).$('input[class="h-input__input"]');
+  get countinueButton() {
+    return $('button[data-testid="identifier-submit"]');
   }
 }
 
